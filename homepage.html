@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshFarm</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-screen"
+      style="background-image: url('hero_homepage.jpg')"
+    >
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative container mx-auto text-center text-white py-24">
+        <h1 class="text-5xl font-bold mb-4">
+          Buy directly from farmers and cooperatives
+        </h1>
+        <p class="text-lg mb-8">
+          Get the freshest products delivered to your door
+        </p>
+        <a
+          href="#categories"
+          class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
+          >Shop Now</a
+        >
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="container mx-auto py-12 px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8">Categories</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Category 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <img
+            src="Lettuce.jpg"
+            alt="Vegetables"
+            class="w-full h-40 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl">Vegetables</h3>
+        </div>
+        <!-- Category 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <img
+            src="banana.jpg"
+            alt="Fruits"
+            class="w-full h-40 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl">Fruits</h3>
+        </div>
+        <!-- Category 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <img
+            src="herbs.jpg"
+            alt="Dairy"
+            class="w-full h-40 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl">Herbs</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="bg-white py-12 px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8">Best Sellers</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img
+            src="carrot.jpg"
+            alt="Product Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Fresh Carrots</h3>
+            <p class="text-gray-600">Rp 25,000</p>
+            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img
+            src="tomatoes.jpg"
+            alt="Product Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Fresh Tomatoes</h3>
+            <p class="text-gray-600">Rp 35,000</p>
+            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img
+            src="herbs.jpg"
+            alt="Product Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Pepper</h3>
+            <p class="text-gray-600">Rp 40,000</p>
+            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 FreshFarm. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
