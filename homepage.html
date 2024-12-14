@@ -10,6 +10,22 @@
     />
   </head>
   <body class="bg-gray-100 text-gray-900">
+    <!-- Header with Admin Greeting and Logout -->
+    <header
+      class="bg-white shadow-md py-4 px-6 flex justify-between items-center"
+    >
+      <h1 class="text-2xl font-bold">FreshFarm</h1>
+      <div class="flex items-center">
+        <span class="text-gray-600 mr-4">Welcome, <strong>Admin</strong></span>
+        <a
+          href="login.html"
+          class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full"
+        >
+          Logout
+        </a>
+      </div>
+    </header>
+
     <!-- Hero Section -->
     <section
       class="relative bg-cover bg-center h-screen"
@@ -57,7 +73,7 @@
         <div class="bg-white p-6 rounded-lg shadow-lg text-center">
           <img
             src="herbs.jpg"
-            alt="Dairy"
+            alt="Herbs"
             class="w-full h-40 object-cover rounded-lg mb-4"
           />
           <h3 class="font-semibold text-xl">Herbs</h3>
@@ -69,53 +85,225 @@
     <section class="bg-white py-12 px-4">
       <h2 class="text-3xl font-semibold text-center mb-8">Best Sellers</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Product 1 -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Carrot Product -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden text-center">
           <img
             src="carrot.jpg"
-            alt="Product Image"
+            alt="Fresh Carrots"
             class="w-full h-56 object-cover"
           />
           <div class="p-4">
             <h3 class="font-semibold text-lg">Fresh Carrots</h3>
             <p class="text-gray-600">Rp 25,000</p>
-            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+            <button
+              onclick="showDetail('Fresh Carrots', 25000, 'carrot.jpg', 'Freshly harvested carrots, packed with nutrients and ready for your kitchen.')"
+              class="bg-blue-500 text-white py-2 px-4 mt-2 rounded-full"
+            >
+              View Details
+            </button>
           </div>
         </div>
-        <!-- Product 2 -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Tomato Product -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden text-center">
           <img
             src="tomatoes.jpg"
-            alt="Product Image"
+            alt="Fresh Tomatoes"
             class="w-full h-56 object-cover"
           />
           <div class="p-4">
             <h3 class="font-semibold text-lg">Fresh Tomatoes</h3>
-            <p class="text-gray-600">Rp 35,000</p>
-            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+            <p class="text-gray-600">Rp 20,000</p>
+            <button
+              onclick="showDetail('Fresh Tomatoes', 20000, 'tomatoes.jpg', 'Juicy and ripe tomatoes, perfect for salads or cooking.')"
+              class="bg-blue-500 text-white py-2 px-4 mt-2 rounded-full"
+            >
+              View Details
+            </button>
           </div>
         </div>
-        <!-- Product 3 -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Lettuce Product -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden text-center">
           <img
-            src="herbs.jpg"
-            alt="Product Image"
+            src="lettuce.jpg"
+            alt="Fresh Lettuce"
             class="w-full h-56 object-cover"
           />
           <div class="p-4">
-            <h3 class="font-semibold text-lg">Pepper</h3>
-            <p class="text-gray-600">Rp 40,000</p>
-            <a href="#" class="text-blue-500 hover:underline">View Details</a>
+            <h3 class="font-semibold text-lg">Fresh Lettuce</h3>
+            <p class="text-gray-600">Rp 15,000</p>
+            <button
+              onclick="showDetail('Fresh Lettuce', 15000, 'lettuce.jpg', 'Crisp, green lettuce leaves, ideal for salads and burgers.')"
+              class="bg-blue-500 text-white py-2 px-4 mt-2 rounded-full"
+            >
+              View Details
+            </button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-      <div class="container mx-auto text-center">
-        <p>&copy; 2024 FreshFarm. All rights reserved.</p>
+    <!-- Cart Section -->
+    <div class="fixed bottom-6 right-6">
+      <button
+        onclick="openCart()"
+        class="bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg"
+      >
+        Cart (<span id="cartCount">0</span>)
+      </button>
+    </div>
+
+    <!-- Product Detail Popup -->
+    <div
+      id="detailPopup"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center w-96">
+        <img
+          id="detailImage"
+          src=""
+          alt="Product"
+          class="w-full h-48 object-cover rounded-lg mb-4"
+        />
+        <h3 id="detailTitle" class="text-2xl font-semibold mb-2"></h3>
+        <p id="detailPrice" class="text-gray-600 mb-2"></p>
+        <p id="detailDescription" class="text-gray-700 mb-4"></p>
+
+        <!-- Quantity Controls -->
+        <div class="flex items-center justify-center mb-4">
+          <button
+            onclick="updateQuantity(-1)"
+            class="bg-gray-300 text-gray-700 py-1 px-3 rounded-full"
+          >
+            -
+          </button>
+          <span id="quantity" class="mx-4 text-lg">1</span>
+          <button
+            onclick="updateQuantity(1)"
+            class="bg-gray-300 text-gray-700 py-1 px-3 rounded-full"
+          >
+            +
+          </button>
+        </div>
+
+        <button
+          onclick="addToCart()"
+          class="bg-green-500 text-white px-4 py-2 rounded-full"
+        >
+          Add to Cart
+        </button>
+        <button
+          onclick="closeDetail()"
+          class="text-gray-500 mt-4 hover:underline block"
+        >
+          Close
+        </button>
       </div>
-    </footer>
+    </div>
+
+    <!-- Cart Popup -->
+    <div
+      id="cartPopup"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center w-80">
+        <h3 class="text-xl font-semibold mb-4">Shopping Cart</h3>
+        <ul id="cartItems" class="text-gray-700 mb-4"></ul>
+        <h4 class="text-lg font-semibold mb-2">
+          Total: Rp <span id="totalAmount">0</span>
+        </h4>
+        <h4 class="text-lg font-semibold mb-2">Payment Info</h4>
+        <p class="text-gray-600 mb-4">
+          Transfer to BCA: 4640165869 a/n Raffy Arsyil
+        </p>
+        <button
+          onclick="closeCart()"
+          class="mt-4 text-gray-500 hover:underline block"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      let cartCount = 0;
+      let cartItems = [];
+      let totalAmount = 0;
+      let currentProduct = {}; // To store current product details
+
+      // Show product details
+      function showDetail(title, price, image, description) {
+        currentProduct = { title, price, image, description, quantity: 1 };
+
+        document.getElementById("detailTitle").innerText = title;
+        document.getElementById("detailPrice").innerText =
+          "Rp " + price.toLocaleString();
+        document.getElementById("detailImage").src = image;
+        document.getElementById("detailDescription").innerText = description;
+        document.getElementById("quantity").innerText = currentProduct.quantity;
+
+        document.getElementById("detailPopup").classList.remove("hidden");
+      }
+
+      // Close the product detail popup
+      function closeDetail() {
+        document.getElementById("detailPopup").classList.add("hidden");
+      }
+
+      // Update the quantity in the modal
+      function updateQuantity(change) {
+        currentProduct.quantity = Math.max(1, currentProduct.quantity + change);
+        document.getElementById("quantity").innerText = currentProduct.quantity;
+      }
+
+      // Add to cart
+      function addToCart() {
+        cartCount++;
+        const itemIndex = cartItems.findIndex(
+          (item) => item.title === currentProduct.title
+        );
+
+        if (itemIndex > -1) {
+          // Item already in cart, update quantity
+          cartItems[itemIndex].quantity += currentProduct.quantity;
+        } else {
+          // Add new item to cart
+          cartItems.push({ ...currentProduct });
+        }
+
+        cartItems.forEach((item) => {
+          item.totalPrice = item.price * item.quantity;
+        });
+
+        totalAmount = cartItems.reduce((sum, item) => sum + item.totalPrice, 0);
+        document.getElementById("cartCount").innerText = cartCount;
+
+        alert("Item added to cart!");
+        closeDetail();
+      }
+
+      // Open cart popup
+      function openCart() {
+        const cartContent = cartItems.length
+          ? cartItems
+              .map(
+                (item) =>
+                  `${item.title} x${
+                    item.quantity
+                  } - Rp ${item.totalPrice.toLocaleString()}`
+              )
+              .join("<br>")
+          : "No items in cart";
+
+        document.getElementById("cartItems").innerHTML = cartContent;
+        document.getElementById("totalAmount").innerText =
+          totalAmount.toLocaleString();
+        document.getElementById("cartPopup").classList.remove("hidden");
+      }
+
+      function closeCart() {
+        document.getElementById("cartPopup").classList.add("hidden");
+      }
+    </script>
   </body>
 </html>
